@@ -1,13 +1,49 @@
 @extends('layouts.app')
-
 @section('title', 'Analisis Dakwaan - SPK Hakim')
 
 @section('content')
+    {{-- CSS Khusus Media Print untuk Format Cetak Dokumen Legal --}}
+    <style>
+        @media print {
+
+            /* Sembunyikan seluruh UI Dashboard & Modal Overlay */
+            body * {
+                visibility: hidden;
+            }
+
+            /* Tampilkan HANYA area dokumen putusan */
+            #printable-document,
+            #printable-document * {
+                visibility: visible;
+            }
+
+            #printable-document {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none !important;
+                border: none !important;
+                background: #ffffff !important;
+            }
+
+            /* Hilangkan tombol atau elemen non-dokumen di dalam print area */
+            .no-print {
+                display: none !important;
+            }
+
+            @page {
+                size: A4 portrait;
+                margin: 20mm;
+            }
+        }
+    </style>
+
     <div class="w-full space-y-6" x-data="{
         showDetailModal: false,
         showPrintModal: false,
-    
-        // State Perkara Terpilih di Panel Samping
         selectedCase: {
             noPerkara: '128/Pid.B/2026/PN Plk',
             terdakwa: 'Budi Santoso',
@@ -19,9 +55,7 @@
                 { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
             ]
         },
-        // State Modal Detail
         activeDetailModal: {},
-    
         selectCase(data) {
             this.selectedCase = data;
         },
@@ -120,16 +154,16 @@
                                 <td class="py-3.5 px-4 text-right">
                                     <button
                                         @click.stop="openModal({
-                                    noPerkara: '128/Pid.B/2026/PN Plk',
-                                    terdakwa: 'Budi Santoso',
-                                    pasal: 'Pasal 362 KUHP',
-                                    status: 'Pembuktian',
-                                    ringkasan: 'Terdakwa Budi Santoso didakwa mengambil 1 unit sepeda motor milik saksi korban pada tanggal 12 September 2026 tanpa izin dengan maksud untuk dimiliki secara melawan hukum.',
-                                    unsur: [
-                                        { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa Budi Santoso sesuai BAP dan pembenaran saksi.' },
-                                        { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
-                                    ]
-                                })"
+                                        noPerkara: '128/Pid.B/2026/PN Plk',
+                                        terdakwa: 'Budi Santoso',
+                                        pasal: 'Pasal 362 KUHP',
+                                        status: 'Pembuktian',
+                                        ringkasan: 'Terdakwa Budi Santoso didakwa mengambil 1 unit sepeda motor milik saksi korban pada tanggal 12 September 2026 tanpa izin dengan maksud untuk dimiliki secara melawan hukum.',
+                                        unsur: [
+                                            { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa Budi Santoso sesuai BAP dan pembenaran saksi.' },
+                                            { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
+                                        ]
+                                    })"
                                         class="text-[#8C6D53] hover:underline font-semibold text-[11px]">Detail
                                         &rarr;</button>
                                 </td>
@@ -168,17 +202,17 @@
                                 <td class="py-3.5 px-4 text-right">
                                     <button
                                         @click.stop="openModal({
-                                    noPerkara: '130/Pid.B/2026/PN Plk',
-                                    terdakwa: 'Siti Rahmawati',
-                                    pasal: 'Pasal 378 KUHP',
-                                    status: 'Dakwaan',
-                                    ringkasan: 'Terdakwa Siti Rahmawati didakwa melakukan bujuk rayu dan penipuan investasi bodong bernilai puluhan juta rupiah.',
-                                    unsur: [
-                                        { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa sesuai dengan KTP dan BAP.' },
-                                        { nama: '2. Unsur &quot;Dengan Maksud Menguntungkan Diri Sendiri&quot;', status: 'Terpenuhi', ket: 'Bukti transfer rekening menampung dana saksi korban.' },
-                                        { nama: '3. Unsur &quot;Tipu Muslihat / Rangkaian Kebohongan&quot;', status: 'Proses', ket: 'Masih menunggu keterangan saksi ahli perbankan.' }
-                                    ]
-                                })"
+                                        noPerkara: '130/Pid.B/2026/PN Plk',
+                                        terdakwa: 'Siti Rahmawati',
+                                        pasal: 'Pasal 378 KUHP',
+                                        status: 'Dakwaan',
+                                        ringkasan: 'Terdakwa Siti Rahmawati didakwa melakukan bujuk rayu dan penipuan investasi bodong bernilai puluhan juta rupiah.',
+                                        unsur: [
+                                            { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa sesuai dengan KTP dan BAP.' },
+                                            { nama: '2. Unsur &quot;Dengan Maksud Menguntungkan Diri Sendiri&quot;', status: 'Terpenuhi', ket: 'Bukti transfer rekening menampung dana saksi korban.' },
+                                            { nama: '3. Unsur &quot;Tipu Muslihat / Rangkaian Kebohongan&quot;', status: 'Proses', ket: 'Masih menunggu keterangan saksi ahli perbankan.' }
+                                        ]
+                                    })"
                                         class="text-[#8C6D53] hover:underline font-semibold text-[11px]">Detail
                                         &rarr;</button>
                                 </td>
@@ -256,11 +290,8 @@
             x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-
             <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-xl w-full max-w-2xl overflow-hidden"
                 @click.away="showDetailModal = false">
-
-                {{-- Modal Header --}}
                 <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Lengkap
@@ -275,10 +306,7 @@
                         </svg>
                     </button>
                 </div>
-
-                {{-- Modal Body --}}
                 <div class="p-6 space-y-5 max-h-[70vh] overflow-y-auto text-xs">
-                    {{-- Meta Info Grid --}}
                     <div class="grid grid-cols-3 gap-4 p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6]">
                         <div>
                             <span class="text-[#7A6E65] block">Nama Terdakwa:</span>
@@ -293,15 +321,11 @@
                             <span class="font-semibold text-[#8C6D53]" x-text="activeDetailModal.status"></span>
                         </div>
                     </div>
-
-                    {{-- Ringkasan Subtansial --}}
                     <div class="space-y-1.5">
                         <span class="font-semibold text-[#2D2723] block">Uraian Ringkasan Surat Dakwaan:</span>
                         <p class="text-[#5C5046] bg-[#F4EFEB] p-3 rounded-lg border border-[#E5DED6] leading-relaxed"
                             x-text="activeDetailModal.ringkasan"></p>
                     </div>
-
-                    {{-- Matriks Keterpenuhan Unsur --}}
                     <div class="space-y-2">
                         <span class="font-semibold text-[#2D2723] block"
                             x-text="'Evaluasi Keterpenuhan ' + activeDetailModal.pasal + ':'"></span>
@@ -321,8 +345,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- Modal Footer --}}
                 <div class="px-6 py-3 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between">
                     <button @click="showDetailModal = false"
                         class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium rounded-lg transition-colors">
@@ -340,25 +362,25 @@
             </div>
         </div>
 
-        {{-- MODAL PRATINJAU / CETAK DRAFT PUTUSAN --}}
+        {{-- MODAL PRATINJAU / CETAK DRAFT PUTUSAN (RESPONSIF & DOKUMEN PRESERVED) --}}
         <div x-show="showPrintModal" x-cloak
-            class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 overflow-y-auto"
             x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
 
-            <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-xl w-full max-w-3xl overflow-hidden"
+            <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden my-auto"
                 @click.away="showPrintModal = false">
-
-                {{-- Header Modal --}}
-                <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between">
+                {{-- Header Modal Non-Print --}}
+                <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between no-print">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Draft Pertimbangan
                             Hukum</span>
                         <h3 class="text-base font-bold text-[#2D2723]"
-                            x-text="'Pratinjau Putusan - ' + selectedCase.noPerkara"></h3>
+                            x-text="'Pratinjau Dokumen Putusan - ' + selectedCase.noPerkara"></h3>
                     </div>
-                    <button @click="showPrintModal = false" class="text-[#7A6E65] hover:text-[#2D2723]">
+                    <button @click="showPrintModal = false"
+                        class="text-[#7A6E65] hover:text-[#2D2723] p-1 rounded-lg hover:bg-[#E5DED6] transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12" />
@@ -366,54 +388,84 @@
                     </button>
                 </div>
 
-                {{-- Dokumen Paper Style --}}
-                <div class="p-6 max-h-[70vh] overflow-y-auto">
-                    <div
-                        class="bg-white p-8 rounded border border-[#E5DED6] shadow-inner space-y-4 text-xs font-serif leading-relaxed text-gray-900">
-                        <div
-                            class="text-center font-bold tracking-widest uppercase border-b pb-4 border-gray-200 space-y-1">
-                            <p class="text-sm">PUTUSAN</p>
-                            <p class="text-[11px]" x-text="'Nomor: ' + selectedCase.noPerkara"></p>
-                            <p class="text-[11px] uppercase">DEMI KEADILAN BERDASARKAN KETUHANAN YANG MAHA ESA</p>
+                {{-- Area Tampilan Kertas Dokumen (Target ID untuk @media print) --}}
+                <div class="p-6 md:p-10 max-h-[75vh] overflow-y-auto bg-[#E5DED6]/40">
+                    <div id="printable-document"
+                        class="bg-white p-10 md:p-14 rounded-sm border border-[#D3C9BF] shadow-md max-w-3xl mx-auto space-y-6 text-xs text-gray-900 leading-relaxed font-serif">
+
+                        {{-- Kop / Kepala Putusan Pengadilan --}}
+                        <div class="text-center space-y-1.5 border-b-2 border-gray-900 pb-6">
+                            <p class="text-sm font-bold tracking-widest uppercase font-sans">P U T U S A N</p>
+                            <p class="text-xs font-semibold font-sans" x-text="'NOMOR: ' + selectedCase.noPerkara"></p>
+                            <p class="text-xs font-bold tracking-wider uppercase font-sans pt-1">DEMI KEADILAN BERDASARKAN
+                                KETUHANAN YANG MAHA ESA</p>
                         </div>
 
-                        <p>Pengadilan Negeri Palangka Raya yang memeriksa dan mengadili perkara pidana dengan acara
+                        {{-- Pengantar Majelis Hakim --}}
+                        <p class="text-justify indent-8 text-xs leading-relaxed">
+                            Pengadilan Negeri Palangka Raya yang memeriksa dan mengadili perkara pidana dengan acara
                             pemeriksaan biasa pada tingkat pertama, telah menjatuhkan putusan sebagai berikut dalam perkara
-                            Terdakwa:</p>
-
-                        <div class="pl-4 space-y-0.5 font-sans text-[11px] text-gray-700">
-                            <p><strong>Nama Lengkap:</strong> <span x-text="selectedCase.terdakwa"></span></p>
-                            <p><strong>Dakwaan Primary:</strong> <span x-text="selectedCase.pasal"></span></p>
-                        </div>
-
-                        <p class="font-bold font-sans text-xs pt-2">PERTIMBANGAN HUKUM MAJELIS HAKIM:</p>
-                        <p
-                            class="italic text-gray-700 bg-gray-50 p-3 rounded border border-gray-200 font-sans text-[11px]">
-                            Menimbang, bahwa berdasarkan fakta-fakta yang terungkap di persidangan melalui pemeriksaan alat
-                            bukti dan barang bukti, Majelis Hakim mempertimbangkan keterpenuhan unsur-unsur tindak pidana
-                            sebagai berikut:
+                            Terdakwa:
                         </p>
 
-                        <div class="space-y-2 font-sans text-[11px]">
-                            <template x-for="(u, index) in selectedCase.unsur" :key="index">
-                                <div class="p-2.5 bg-[#FAF8F5] rounded border border-[#E5DED6]">
-                                    <span class="font-bold text-[#2D2723]" x-text="u.nama"></span>:
-                                    <span class="text-gray-600" x-text="u.ket"></span>
-                                </div>
-                            </template>
+                        {{-- Identitas Terdakwa dalam Format Resmi --}}
+                        <div class="pl-6 space-y-1 font-sans text-xs">
+                            <div class="grid grid-cols-4">
+                                <span class="font-semibold">Nama Lengkap</span>
+                                <span class="col-span-3" x-text="': ' + selectedCase.terdakwa"></span>
+                            </div>
+                            <div class="grid grid-cols-4">
+                                <span class="font-semibold">Dakwaan Primary</span>
+                                <span class="col-span-3" x-text="': ' + selectedCase.pasal"></span>
+                            </div>
+                            <div class="grid grid-cols-4">
+                                <span class="font-semibold">Status Perkara</span>
+                                <span class="col-span-3" x-text="': Tahap ' + selectedCase.status"></span>
+                            </div>
+                        </div>
+
+                        {{-- Pertimbangan Hukum Majelis Hakim --}}
+                        <div class="space-y-3 pt-3">
+                            <p class="font-bold font-sans text-xs uppercase tracking-wide border-b border-gray-200 pb-1">
+                                PERTIMBANGAN HUKUM MAJELIS HAKIM:</p>
+                            <p class="text-justify italic text-gray-800 leading-relaxed">
+                                Menimbang, bahwa berdasarkan fakta-fakta yang terungkap di persidangan melalui pemeriksaan
+                                alat bukti dan barang bukti, Majelis Hakim mempertimbangkan keterpenuhan unsur-unsur tindak
+                                pidana sebagai berikut:
+                            </p>
+
+                            {{-- Daftar Evaluasi Unsur --}}
+                            <div class="space-y-3 pl-2 pt-1 font-sans">
+                                <template x-for="(u, index) in selectedCase.unsur" :key="index">
+                                    <div class="space-y-0.5">
+                                        <p class="font-bold text-gray-900 text-xs" x-text="u.nama + ':'"></p>
+                                        <p class="text-gray-700 text-xs text-justify pl-4" x-text="u.ket"></p>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        {{-- Tanda Tangan / Penutup Dokumen --}}
+                        <div class="pt-10 flex justify-end text-center font-sans text-xs">
+                            <div class="space-y-12">
+                                <p>Palangka Raya,
+                                    {{ \Carbon\Carbon::now()->locale('id')->isoFormat('D MMMM Y') }}<br><strong>Majelis
+                                        Hakim Pengadilan Negeri</strong></p>
+                                <p class="font-bold underline">Yang Mulia Hakim Ketua</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Footer Controls --}}
-                <div class="px-6 py-3 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between">
+                {{-- Footer Controls Non-Print --}}
+                <div class="px-6 py-3.5 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between no-print">
                     <button @click="showPrintModal = false"
                         class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium text-xs rounded-lg transition-colors">
                         Tutup
                     </button>
                     <div class="flex items-center gap-2">
                         <button @click="triggerPrint()"
-                            class="px-4 py-1.5 bg-[#8C6D53] hover:bg-[#735842] text-white font-medium text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer">
+                            class="px-4 py-1.5 bg-[#8C6D53] hover:bg-[#735842] text-white font-medium text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer shadow-sm">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />

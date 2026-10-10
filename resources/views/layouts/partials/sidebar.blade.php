@@ -2,8 +2,8 @@
     class="w-64 h-full bg-[#1A1614] text-[#E5DED6] flex flex-col shrink-0 border-r border-[#2A2421] relative overflow-hidden select-none">
 
     {{-- ================= BACKGROUND SILUET DEWI THEMIS (SIDEBAR ONLY) ================= --}}
-    {{-- Diubah: bottom-4 (dinaikkan), scale-x-[-1] (flip horizontal ke kanan) --}}
-    <div class="absolute -right-6 bottom-4 w-56 h-auto opacity-20 pointer-events-none z-0 transform scale-x-[-1]">
+    {{-- Diubah: bottom-10 (dinaikkan), -right-1 (digeser ke kiri/ke dalam), scale-x-[-1] (tetap flip ke kanan) --}}
+    <div class="absolute -right-1 bottom-10 w-56 h-auto opacity-20 pointer-events-none z-0 transform scale-x-[-1]">
         <img src="{{ asset('images/dewi-themis.png') }}" alt="Siluet Dewi Themis"
             class="w-full h-auto object-contain filter grayscale contrast-125 mix-blend-lighten drop-shadow-md">
         {{-- Gradient Mask agar tepi atas & kanan (setelah flip) memudar halus menyatu dengan warna #1A1614 --}}

@@ -114,7 +114,7 @@
                     <div @click="selectedItem = '378'"
                         :class="selectedItem === '378' ? 'border-2 border-[#8C6D53]' :
                             'border border-warm-border hover:border-[#C2A388]'"
-                        class="bg-[#FAF8F5] p-5 rounded-xl shadow-sm transition-all cursor-pointer">
+                        class="bg-warm-card p-5 rounded-xl shadow-sm transition-all cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div>
                                 <div class="flex items-center gap-2">
@@ -195,7 +195,7 @@
 
                     {{-- Yurisprudensi 2 --}}
                     <div
-                        class="bg-[#FAF8F5] p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
+                        class="bg-warm-card p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div>
                                 <div class="flex items-center gap-2">
@@ -236,7 +236,7 @@
                 <div x-show="activeTab === 'sema_perma'" class="space-y-4" style="display: none;">
                     {{-- PERMA No. 2 Tahun 2012 --}}
                     <div
-                        class="bg-[#FAF8F5] p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
+                        class="bg-warm-card p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div>
                                 <div class="flex items-center gap-2">
@@ -274,7 +274,7 @@
 
                     {{-- SEMA No. 1 Tahun 2023 --}}
                     <div
-                        class="bg-[#FAF8F5] p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
+                        class="bg-warm-card p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div>
                                 <div class="flex items-center gap-2">
@@ -316,7 +316,7 @@
                 <div x-show="activeTab === 'pedoman'" class="space-y-4" style="display: none;">
                     {{-- PERMA No. 1 Tahun 2020 --}}
                     <div
-                        class="bg-[#FAF8F5] p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
+                        class="bg-warm-card p-5 rounded-xl border border-warm-border hover:border-[#C2A388] shadow-sm transition-all cursor-pointer">
                         <div class="flex items-start justify-between">
                             <div>
                                 <div class="flex items-center gap-2">
@@ -357,7 +357,7 @@
             </div>
 
             {{-- Detail Inspector Panel (Col Span 1) --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-warm-border shadow-sm space-y-5 h-fit sticky top-6">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm space-y-5 h-fit sticky top-6">
                 <div class="border-b border-warm-border pb-3 flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Inspector</span>
@@ -365,7 +365,7 @@
                             x-text="selectedItem === '362' ? 'Pasal 362 KUHP (Pencurian)' : 'Pasal 378 KUHP (Penipuan)'">
                         </h2>
                     </div>
-                    <button class="p-1.5 rounded-lg bg-[#F4EFEB] hover:bg-[#EFE9E2] text-[#7A6E65]" title="Salin Teks">
+                    <button class="p-1.5 rounded-lg bg-warm-bg hover:bg-[#EFE9E2] text-[#7A6E65]" title="Salin Teks">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -376,7 +376,7 @@
                 {{-- Bunyi Teks Otentik --}}
                 <div class="space-y-2">
                     <span class="text-xs font-semibold text-[#7A6E65]">Teks Otentik Bunyi Pasal:</span>
-                    <div class="p-3 bg-[#F4EFEB] rounded-lg border border-warm-border text-xs text-[#2D2723] leading-relaxed italic"
+                    <div class="p-3 bg-warm-bgounded-lg border border-warm-border text-xs text-[#2D2723] leading-relaxed italic"
                         x-text="selectedItem === '362' 
                             ? '&quot;Barang siapa mengambil barang sesuatu, yang seluruhnya atau sebagian kepunyaan orang lain, dengan maksud untuk dimiliki secara melawan hukum, diancam karena pencurian...&quot;' 
                             : '&quot;Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, dengan memakai nama palsu atau martabat palsu, dengan tipu muslihat...&quot;'">
@@ -387,7 +387,7 @@
                 <div class="space-y-3">
                     <span class="text-xs font-semibold text-[#2D2723] block">Elemen Unsur Pembuktian:</span>
 
-                    <div class="p-3 bg-[#F4EFEB] rounded-lg border border-warm-border space-y-1">
+                    <div class="p-3 bg-warm-bg rounded-lg border border-warm-border space-y-1">
                         <span class="text-xs font-semibold text-[#8C6D53]">1. Subjek Hukum</span>
                         <p class="text-[11px] text-[#7A6E65] leading-relaxed">Setiap orang/subjek hukum yang mampu
                             bertanggung jawab secara pidana.</p>

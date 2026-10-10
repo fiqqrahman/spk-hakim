@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="bg-[#F4EFEB] text-[#2D2723] antialiased flex h-screen overflow-hidden relative">
+<body class="bg-warm-bg text-[#2D2723] antialiased flex h-screen overflow-hidden relative">
 
     {{-- ================= UTAMA (UI LAYER) ================= --}}
     {{-- Sidebar Partial Inclusion --}}

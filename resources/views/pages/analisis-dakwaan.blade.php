@@ -69,7 +69,7 @@
     }">
         {{-- Top Action Header & Filter --}}
         <div
-            class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+            class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
                 <h1 class="text-base font-semibold text-[#2D2723]">Analisis & Ekstraksi Surat Dakwaan</h1>
                 <p class="text-xs text-[#7A6E65] mt-0.5">Daftar perkara aktif beserta hasil analisis otomatis keterpenuhan
@@ -78,7 +78,7 @@
             <div class="flex items-center gap-3 shrink-0">
                 <div class="relative">
                     <input type="text" placeholder="Cari No. Perkara / Terdakwa..."
-                        class="w-64 px-3.5 py-1.5 pl-9 text-xs bg-[#F4EFEB] border border-[#E5DED6] rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] transition-colors">
+                        class="w-64 px-3.5 py-1.5 pl-9 text-xs bg-warm-bg border border-warm-border rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] transition-colors">
                     <svg class="w-3.5 h-3.5 text-[#A39589] absolute left-3 top-2.5" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,7 +86,7 @@
                     </svg>
                 </div>
                 <select
-                    class="px-3 py-1.5 text-xs bg-[#F4EFEB] border border-[#E5DED6] rounded-lg text-[#5C5046] focus:outline-none focus:border-[#8C6D53]">
+                    class="px-3 py-1.5 text-xs bg-warm-bg border border-warm-border rounded-lg text-[#5C5046] focus:outline-none focus:border-[#8C6D53]">
                     <option value="">Semua Status</option>
                     <option value="pembuktian">Pembuktian</option>
                     <option value="dakwaan">Dakwaan</option>
@@ -106,12 +106,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {{-- Table Section (Col Span 2) --}}
             <div
-                class="lg:col-span-2 bg-[#FAF8F5] rounded-xl border border-[#E5DED6] shadow-sm overflow-hidden flex flex-col justify-between">
+                class="lg:col-span-2 bg-warm-card rounded-xl border border-warm-border shadow-sm overflow-hidden flex flex-col justify-between">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs">
                         <thead>
                             <tr
-                                class="bg-[#F4EFEB] border-b border-[#E5DED6] text-[#7A6E65] uppercase font-semibold tracking-wider">
+                                class="bg-warm-bg border-b border-warm-border text-[#7A6E65] uppercase font-semibold tracking-wider">
                                 <th class="py-3 px-4">No. Perkara</th>
                                 <th class="py-3 px-4">Terdakwa</th>
                                 <th class="py-3 px-4">Pasal Primary</th>
@@ -120,7 +120,7 @@
                                 <th class="py-3 px-4 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-[#E5DED6] text-[#2D2723]">
+                        <tbody class="divide-y divide-warm-border text-[#2D2723]">
                             {{-- Row 1 --}}
                             <tr @click="selectCase({
                                 noPerkara: '128/Pid.B/2026/PN Plk',
@@ -134,7 +134,7 @@
                                 ]
                             })"
                                 :class="selectedCase.noPerkara === '128/Pid.B/2026/PN Plk' ?
-                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-[#F4EFEB]'"
+                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-warm-bg'"
                                 class="transition-colors cursor-pointer">
                                 <td class="py-3.5 px-4 font-semibold">128/Pid.B/2026/PN Plk</td>
                                 <td class="py-3.5 px-4 font-medium">Budi Santoso</td>
@@ -182,7 +182,7 @@
                                 ]
                             })"
                                 :class="selectedCase.noPerkara === '130/Pid.B/2026/PN Plk' ?
-                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-[#F4EFEB]'"
+                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-warm-bg'"
                                 class="transition-colors cursor-pointer">
                                 <td class="py-3.5 px-4 font-semibold">130/Pid.B/2026/PN Plk</td>
                                 <td class="py-3.5 px-4 font-medium">Siti Rahmawati</td>
@@ -222,23 +222,23 @@
                 </div>
                 {{-- Table Pagination --}}
                 <div
-                    class="p-4 bg-[#FAF8F5] border-t border-[#E5DED6] flex items-center justify-between text-xs text-[#7A6E65]">
+                    class="p-4 bg-warm-card border-t border-warm-border flex items-center justify-between text-xs text-[#7A6E65]">
                     <span>Menampilkan 1-4 dari 12 Perkara</span>
                     <div class="flex items-center gap-1">
                         <button
-                            class="px-2.5 py-1 bg-[#F4EFEB] border border-[#E5DED6] rounded hover:bg-[#EFE9E2]">Prev</button>
+                            class="px-2.5 py-1 bg-warm-bg border border-warm-border rounded hover:bg-[#EFE9E2]">Prev</button>
                         <button class="px-2.5 py-1 bg-[#8C6D53] text-white font-medium rounded">1</button>
                         <button
-                            class="px-2.5 py-1 bg-[#F4EFEB] border border-[#E5DED6] rounded hover:bg-[#EFE9E2]">2</button>
+                            class="px-2.5 py-1 bg-warm-bg border border-warm-border rounded hover:bg-[#EFE9E2]">2</button>
                         <button
-                            class="px-2.5 py-1 bg-[#F4EFEB] border border-[#E5DED6] rounded hover:bg-[#EFE9E2]">Next</button>
+                            class="px-2.5 py-1 bg-warm-bg border border-warm-border rounded hover:bg-[#EFE9E2]">Next</button>
                     </div>
                 </div>
             </div>
 
             {{-- Detail Side Panel (Col Span 1) -- Synchronized with selectedCase --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm space-y-5 h-fit sticky top-6">
-                <div class="border-b border-[#E5DED6] pb-3 flex items-center justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm space-y-5 h-fit sticky top-6">
+                <div class="border-b border-warm-border pb-3 flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Analisis
                             AI</span>
@@ -252,14 +252,14 @@
                 </div>
                 <div class="space-y-2 text-xs">
                     <span class="font-semibold text-[#7A6E65]">Ringkasan Pokok Dakwaan:</span>
-                    <p class="text-[#5C5046] bg-[#F4EFEB] p-3 rounded-lg border border-[#E5DED6] leading-relaxed"
+                    <p class="text-[#5C5046] bg-warm-bg p-3 rounded-lg border border-warm-border leading-relaxed"
                         x-text="selectedCase.ringkasan"></p>
                 </div>
                 <div class="space-y-3">
                     <span class="text-xs font-semibold text-[#2D2723] block"
                         x-text="'Matriks Unsur ' + selectedCase.pasal + ':'"></span>
                     <template x-for="(u, index) in selectedCase.unsur" :key="index">
-                        <div class="p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6] space-y-1">
+                        <div class="p-3 bg-warm-bg rounded-lg border border-warm-border space-y-1">
                             <div class="flex items-center justify-between text-xs">
                                 <span class="font-semibold text-[#2D2723]" x-text="u.nama"></span>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded"
@@ -271,7 +271,7 @@
                         </div>
                     </template>
                 </div>
-                <div class="pt-2 border-t border-[#E5DED6]">
+                <div class="pt-2 border-t border-warm-border">
                     <button @click="showPrintModal = true"
                         class="w-full py-2 bg-[#8C6D53] hover:bg-[#735842] text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,9 +290,9 @@
             x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-            <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-xl w-full max-w-2xl overflow-hidden"
+            <div class="bg-warm-card border border-warm-border rounded-xl shadow-xl w-full max-w-2xl overflow-hidden"
                 @click.away="showDetailModal = false">
-                <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between">
+                <div class="px-6 py-4 bg-warm-bg border-b border-warm-border flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Lengkap
                             Ekstraksi AI</span>
@@ -307,7 +307,7 @@
                     </button>
                 </div>
                 <div class="p-6 space-y-5 max-h-[70vh] overflow-y-auto text-xs">
-                    <div class="grid grid-cols-3 gap-4 p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6]">
+                    <div class="grid grid-cols-3 gap-4 p-3 bg-warm-bg rounded-lg border border-warm-border">
                         <div>
                             <span class="text-[#7A6E65] block">Nama Terdakwa:</span>
                             <span class="font-semibold text-[#2D2723]" x-text="activeDetailModal.terdakwa"></span>
@@ -323,7 +323,7 @@
                     </div>
                     <div class="space-y-1.5">
                         <span class="font-semibold text-[#2D2723] block">Uraian Ringkasan Surat Dakwaan:</span>
-                        <p class="text-[#5C5046] bg-[#F4EFEB] p-3 rounded-lg border border-[#E5DED6] leading-relaxed"
+                        <p class="text-[#5C5046] bg-warm-bg p-3 rounded-lg border border-warm-border leading-relaxed"
                             x-text="activeDetailModal.ringkasan"></p>
                     </div>
                     <div class="space-y-2">
@@ -331,7 +331,7 @@
                             x-text="'Evaluasi Keterpenuhan ' + activeDetailModal.pasal + ':'"></span>
                         <div class="space-y-2">
                             <template x-for="(u, index) in activeDetailModal.unsur" :key="index">
-                                <div class="p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6] space-y-1">
+                                <div class="p-3 bg-warm-bg rounded-lg border border-warm-border space-y-1">
                                     <div class="flex items-center justify-between">
                                         <span class="font-semibold text-[#2D2723]" x-text="u.nama"></span>
                                         <span class="text-[10px] font-bold px-2 py-0.5 rounded"
@@ -345,9 +345,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="px-6 py-3 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between">
+                <div class="px-6 py-3 bg-warm-bg border-t border-warm-border flex items-center justify-between">
                     <button @click="showDetailModal = false"
-                        class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium rounded-lg transition-colors">
+                        class="px-4 py-1.5 bg-warm-border hover:bg-[#DDD5CC] text-[#2D2723] font-medium rounded-lg transition-colors">
                         Tutup
                     </button>
                     <button @click="showDetailModal = false; showPrintModal = true"
@@ -369,10 +369,10 @@
             x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
 
-            <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden my-auto"
+            <div class="bg-warm-card border border-warm-border rounded-xl shadow-2xl w-full max-w-4xl overflow-hidden my-auto"
                 @click.away="showPrintModal = false">
                 {{-- Header Modal Non-Print --}}
-                <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between no-print">
+                <div class="px-6 py-4 bg-warm-bg border-b border-warm-border flex items-center justify-between no-print">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Draft Pertimbangan
                             Hukum</span>
@@ -380,7 +380,7 @@
                             x-text="'Pratinjau Dokumen Putusan - ' + selectedCase.noPerkara"></h3>
                     </div>
                     <button @click="showPrintModal = false"
-                        class="text-[#7A6E65] hover:text-[#2D2723] p-1 rounded-lg hover:bg-[#E5DED6] transition-colors">
+                        class="text-[#7A6E65] hover:text-[#2D2723] p-1 rounded-lg hover:bg-warm-border transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M6 18L18 6M6 6l12 12" />
@@ -389,7 +389,7 @@
                 </div>
 
                 {{-- Area Tampilan Kertas Dokumen (Target ID untuk @media print) --}}
-                <div class="p-6 md:p-10 max-h-[75vh] overflow-y-auto bg-[#E5DED6]/40">
+                <div class="p-6 md:p-10 max-h-[75vh] overflow-y-auto bg-warm-border/40">
                     <div id="printable-document"
                         class="bg-white p-10 md:p-14 rounded-sm border border-[#D3C9BF] shadow-md max-w-3xl mx-auto space-y-6 text-xs text-gray-900 leading-relaxed font-serif">
 
@@ -458,9 +458,9 @@
                 </div>
 
                 {{-- Footer Controls Non-Print --}}
-                <div class="px-6 py-3.5 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between no-print">
+                <div class="px-6 py-3.5 bg-warm-bg border-t border-warm-border flex items-center justify-between no-print">
                     <button @click="showPrintModal = false"
-                        class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium text-xs rounded-lg transition-colors">
+                        class="px-4 py-1.5 bg-warm-border hover:bg-[#DDD5CC] text-[#2D2723] font-medium text-xs rounded-lg transition-colors">
                         Tutup
                     </button>
                     <div class="flex items-center gap-2">

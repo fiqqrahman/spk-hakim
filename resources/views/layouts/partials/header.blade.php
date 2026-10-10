@@ -1,4 +1,4 @@
-<header class="h-16 bg-[#FAF8F5] border-b border-[#E5DED6] px-8 flex items-center justify-between shrink-0 relative">
+<header class="h-16 bg-warm-card border-b border-warm-border px-8 flex items-center justify-between shrink-0 relative">
     {{-- Sisi Kiri: Judul Sistem, Lokasi & Breadcrumb --}}
     <div class="flex flex-col justify-center">
         <h2 class="text-base font-semibold text-[#2D2723] leading-tight">Sistem Pendukung Keputusan Hakim</h2>
@@ -39,7 +39,7 @@
     <div class="flex items-center gap-5">
         {{-- Widget Hari, Tanggal, Bulan, Tahun, & Jam (Tanpa Detik) --}}
         <div
-            class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F4EFEB] border border-[#E5DED6] text-xs font-medium text-[#5C5046]">
+            class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-warm-bg border border-warm-border text-xs font-medium text-[#5C5046]">
             <svg class="w-3.5 h-3.5 text-[#8C6D53]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -50,25 +50,25 @@
             </span>
         </div>
 
-        <div class="h-4 w-px bg-[#E5DED6]"></div>
+        <div class="h-4 w-px bg-warm-border"></div>
 
         {{-- Container Relative Icon Notifikasi & Modal Popover --}}
         <div class="relative">
             <button id="notification-btn" type="button" onclick="toggleNotificationModal()"
-                class="relative p-2 rounded-lg text-[#7A6E65] hover:text-[#2D2723] hover:bg-[#F4EFEB] transition-colors focus:outline-none"
+                class="relative p-2 rounded-lg text-[#7A6E65] hover:text-[#2D2723] hover:bg-warm-bg transition-colors focus:outline-none"
                 title="Notifikasi">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
                 <span id="notification-dot"
-                    class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#8C6D53] ring-2 ring-[#FAF8F5]"></span>
+                    class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#8C6D53] ring-2 ring-warm-card"></span>
             </button>
 
             {{-- MODAL / POPOVER NOTIFIKASI --}}
             <div id="notification-modal"
-                class="hidden absolute right-0 mt-3 w-80 md:w-96 bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-lg z-50 overflow-hidden transform transition-all duration-200 origin-top-right">
-                <div class="p-4 border-b border-[#E5DED6] flex items-center justify-between bg-[#FAF8F5]">
+                class="hidden absolute right-0 mt-3 w-80 md:w-96 bg-warm-card border border-warm-border rounded-xl shadow-lg z-50 overflow-hidden transform transition-all duration-200 origin-top-right">
+                <div class="p-4 border-b border-warm-border flex items-center justify-between bg-warm-card">
                     <div class="flex items-center gap-2">
                         <h3 class="text-xs font-bold text-[#2D2723] uppercase tracking-wider">Notifikasi Sistem</h3>
                         <span class="px-2 py-0.5 text-[10px] bg-[#8C6D53] text-white rounded-full font-semibold">3
@@ -77,8 +77,8 @@
                     <button onclick="markAllAsRead()"
                         class="text-[11px] text-[#8C6D53] hover:underline font-medium">Tandai Dibaca</button>
                 </div>
-                <div class="max-h-80 overflow-y-auto divide-y divide-[#E5DED6]">
-                    <a href="#" class="p-3.5 flex gap-3 hover:bg-[#F4EFEB] transition-colors group block">
+                <div class="max-h-80 overflow-y-auto divide-y divide-warm-border">
+                    <a href="#" class="p-3.5 flex gap-3 hover:bg-warm-bg transition-colors group">
                         <div class="w-2 h-2 rounded-full bg-[#8C6D53] mt-1.5 shrink-0"></div>
                         <div class="space-y-1">
                             <p
@@ -89,7 +89,7 @@
                             <span class="text-[10px] text-[#A39589] block">5 menit yang lalu</span>
                         </div>
                     </a>
-                    <a href="#" class="p-3.5 flex gap-3 hover:bg-[#F4EFEB] transition-colors group block">
+                    <a href="#" class="p-3.5 flex gap-3 hover:bg-warm-bg transition-colors group">
                         <div class="w-2 h-2 rounded-full bg-[#8C6D53] mt-1.5 shrink-0"></div>
                         <div class="space-y-1">
                             <p
@@ -100,8 +100,7 @@
                             <span class="text-[10px] text-[#A39589] block">1 jam yang lalu</span>
                         </div>
                     </a>
-                    <a href="#"
-                        class="p-3.5 flex gap-3 hover:bg-[#F4EFEB] transition-colors opacity-75 group block">
+                    <a href="#" class="p-3.5 flex gap-3 hover:bg-warm-bg transition-colors opacity-75 group">
                         <div class="w-2 h-2 rounded-full bg-transparent mt-1.5 shrink-0"></div>
                         <div class="space-y-1">
                             <p class="text-xs font-medium text-[#2D2723]">Jadwal Sidang Pembuktian</p>
@@ -111,7 +110,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="p-3 bg-[#F4EFEB] border-t border-[#E5DED6] text-center">
+                <div class="p-3 bg-warm-bg border-t border-warm-border text-center">
                     <a href="#" class="text-xs font-semibold text-[#8C6D53] hover:underline">Lihat Semua Aktivitas
                         Perkara</a>
                 </div>
@@ -122,7 +121,7 @@
         <form method="POST" action="" class="inline">
             @csrf
             <button type="submit"
-                class="p-2 rounded-lg text-[#7A6E65] hover:text-red-700 hover:bg-[#F4EFEB] transition-colors focus:outline-none"
+                class="p-2 rounded-lg text-[#7A6E65] hover:text-red-700 hover:bg-warm-bg transition-colors focus:outline-none"
                 title="Keluar / Logout">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

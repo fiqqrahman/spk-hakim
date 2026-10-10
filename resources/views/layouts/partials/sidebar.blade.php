@@ -1,5 +1,5 @@
 <aside
-    class="w-64 h-full bg-[#1A1614] text-[#E5DED6] flex flex-col shrink-0 border-r border-[#2A2421] relative overflow-hidden select-none">
+    class="w-64 h-full bg-dark-sidebar text-warm-border flex flex-col shrink-0 border-r border-[#2A2421] relative overflow-hidden select-none">
 
     {{-- ================= BACKGROUND SILUET DEWI THEMIS (SIDEBAR ONLY) ================= --}}
     {{-- Diubah: bottom-10 (dinaikkan), -right-1 (digeser ke kiri/ke dalam), scale-x-[-1] (tetap flip ke kanan) --}}
@@ -7,13 +7,13 @@
         <img src="{{ asset('images/dewi-themis.png') }}" alt="Siluet Dewi Themis"
             class="w-full h-auto object-contain filter grayscale contrast-125 mix-blend-lighten drop-shadow-md">
         {{-- Gradient Mask agar tepi atas & kanan (setelah flip) memudar halus menyatu dengan warna #1A1614 --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-[#1A1614] via-transparent to-[#1A1614]"></div>
-        <div class="absolute inset-0 bg-gradient-to-l from-[#1A1614] via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-linear-to-t from-dark-sidebar via-transparent to-dark-sidebar"></div>
+        <div class="absolute inset-0 bg-linear-to-l from-dark-sidebar via-transparent to-transparent"></div>
     </div>
 
     {{-- Brand / Header --}}
     <div
-        class="h-16 flex items-center px-6 border-b border-[#2A2421] shrink-0 relative z-10 bg-[#1A1614]/90 backdrop-blur-xs">
+        class="h-16 flex items-center px-6 border-b border-[#2A2421] shrink-0 relative z-10 bg-dark-sidebar/90 backdrop-blur-xs">
         <div class="flex items-center gap-3">
             <div
                 class="w-8 h-8 rounded bg-[#8C6D53] flex items-center justify-center text-white font-bold text-sm shadow-sm">
@@ -63,10 +63,10 @@
     </nav>
 
     {{-- Profile User --}}
-    <div class="p-4 border-t border-[#2A2421] shrink-0 relative z-10 bg-[#1A1614]/80 backdrop-blur-xs">
+    <div class="p-4 border-t border-[#2A2421] shrink-0 relative z-10 bg-dark-sidebar/80 backdrop-blur-xs">
         <div class="flex items-center gap-3">
             <div
-                class="w-9 h-9 rounded-full bg-[#3D332D] flex items-center justify-center font-semibold text-xs text-[#E5DED6] border border-[#4A3E37]">
+                class="w-9 h-9 rounded-full bg-[#3D332D] flex items-center justify-center font-semibold text-xs text-warm-border border border-[#4A3E37]">
                 HK
             </div>
             <div class="min-w-0 flex-1">

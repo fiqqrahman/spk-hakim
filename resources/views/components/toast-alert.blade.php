@@ -3,7 +3,7 @@
     <div id="custom-toast"
         class="hidden opacity-0 translate-y-2 pointer-events-auto max-w-sm transition-all duration-300 ease-out">
         <div
-            class="flex items-center justify-between gap-3 p-3.5 bg-[#FAF8F5] border-l-4 border-[#8C6D53] border-y border-r border-[#E5DED6] rounded-r-lg shadow-md text-xs text-[#2D2723]">
+            class="flex items-center justify-between gap-3 p-3.5 bg-warm-card border-y border-r border-warm-border border-l-4 border-l-[#8C6D53] rounded-r-lg shadow-md text-xs text-[#2D2723]">
             <div class="flex items-center gap-2.5 min-w-0">
                 <svg class="w-4 h-4 text-[#8C6D53] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

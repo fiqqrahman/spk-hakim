@@ -8,7 +8,7 @@
         {{-- Top Grid: Stat Metric Cards --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {{-- Card 1: Perkara Aktif --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-semibold uppercase tracking-wider text-[#7A6E65]">Total Perkara Aktif</span>
                     <span class="p-1.5 rounded-lg bg-[#EFE9E2] text-[#8C6D53]">
@@ -25,7 +25,7 @@
             </div>
 
             {{-- Card 2: Tahap Pembuktian --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-semibold uppercase tracking-wider text-[#7A6E65]">Tahap Pembuktian</span>
                     <span class="p-1.5 rounded-lg bg-[#EFE9E2] text-[#8C6D53]">
@@ -44,7 +44,7 @@
             </div>
 
             {{-- Card 3: Siap Putusan --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-semibold uppercase tracking-wider text-[#7A6E65]">Siap Putusan</span>
                     <span class="p-1.5 rounded-lg bg-[#EFE9E2] text-[#8C6D53]">
@@ -61,7 +61,7 @@
             </div>
 
             {{-- Card 4: Rata-rata Durasi Perkara --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-semibold uppercase tracking-wider text-[#7A6E65]">Rata-rata Durasi</span>
                     <span class="p-1.5 rounded-lg bg-[#EFE9E2] text-[#8C6D53]">
@@ -84,7 +84,7 @@
 
             {{-- Bar Chart: Distribusi Pasal Dominan --}}
             <div
-                class="lg:col-span-2 bg-[#FAF8F5] p-6 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between space-y-4">
+                class="lg:col-span-2 bg-warm-card p-6 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between space-y-4">
                 <div class="flex items-center justify-between">
                     <div>
                         <h3 class="text-sm font-semibold text-[#2D2723]">Distribusi Pasal Dakwaan Bulan Ini</h3>
@@ -142,7 +142,7 @@
 
             {{-- Donut Chart: Komposisi Status Perkara --}}
             <div
-                class="bg-[#FAF8F5] p-6 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between space-y-4">
+                class="bg-warm-card p-6 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between space-y-4">
                 <div>
                     <h3 class="text-sm font-semibold text-[#2D2723]">Status Persidangan</h3>
                     <p class="text-xs text-[#7A6E65] mt-0.5">Prosentase progres penanganan</p>
@@ -175,7 +175,7 @@
                 </div>
 
                 {{-- Chart Legend --}}
-                <div class="grid grid-cols-3 gap-1 text-[11px] text-[#5C5046] pt-1 border-t border-[#E5DED6]">
+                <div class="grid grid-cols-3 gap-1 text-[11px] text-[#5C5046] pt-1 border-t border-warm-border">
                     <div class="flex items-center gap-1.5">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#8C6D53]"></span>
                         <span>Pembuktian</span>
@@ -200,7 +200,7 @@
             <div class="lg:col-span-3 space-y-5">
                 {{-- Quick Action Upload --}}
                 <div
-                    class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex items-center justify-between gap-4">
+                    class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex items-center justify-between gap-4">
                     <div>
                         <h3 class="text-sm font-semibold text-[#2D2723]">Analisis Dokumen Dakwaan Baru</h3>
                         <p class="text-xs text-[#7A6E65] mt-1">Unggah berkas dakwaan (PDF/Docx) untuk memicu ekstraksi
@@ -216,8 +216,8 @@
                 </div>
 
                 {{-- Focus Card: Perkara Aktif --}}
-                <div class="bg-[#FAF8F5] p-6 rounded-xl border border-[#E5DED6] shadow-sm space-y-4">
-                    <div class="flex items-center justify-between border-b border-[#E5DED6] pb-3">
+                <div class="bg-warm-card p-6 rounded-xl border border-warm-border shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-warm-border pb-3">
                         <h3 class="text-sm font-semibold text-[#2D2723]">Perkara No. 128/Pid.B/2026/PN Plk</h3>
                         <span
                             class="text-xs px-2.5 py-0.5 rounded bg-[#EFE9E2] text-[#5C5046] font-medium border border-[#DDD5CC]">Tahap
@@ -235,7 +235,7 @@
                         </div>
                     </div>
 
-                    <div class="p-3.5 bg-[#F4EFEB] rounded-lg border border-[#E5DED6] text-xs text-[#5C5046] space-y-1.5">
+                    <div class="p-3.5 bg-warm-bg rounded-lg border border-warm-border text-xs text-[#5C5046] space-y-1.5">
                         <p class="font-semibold text-[#2D2723]">Matriks Keterpenuhan Unsur (Simulasi AI):</p>
                         <p>• Unsur "Barang Siapa": <span class="font-semibold text-emerald-800">Terpenuhi</span></p>
                         <p>• Unsur "Mengambil barang milik orang lain": <span
@@ -245,17 +245,17 @@
             </div>
 
             {{-- Side Focus: Yurisprudensi Terkait (Col Span 1) --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm flex flex-col justify-between">
+            <div class="bg-warm-card p-5 rounded-xl border border-warm-border shadow-sm flex flex-col justify-between">
                 <div>
                     <h4 class="text-xs font-semibold uppercase tracking-wider text-[#7A6E65] mb-3">Yurisprudensi Terkait
                     </h4>
                     <div class="space-y-3 text-xs">
-                        <div class="p-3 rounded bg-[#F4EFEB] border border-[#E5DED6]">
+                        <div class="p-3 rounded bg-warm-bg border border-warm-border">
                             <p class="font-medium text-[#2D2723]">Putusan MA No. 412/Pid/2022</p>
                             <p class="text-[11px] text-[#7A6E65] mt-1 leading-relaxed">Preseden pertimbangan unsur
                                 penguasaan barang tanpa hak.</p>
                         </div>
-                        <div class="p-3 rounded bg-[#F4EFEB] border border-[#E5DED6]">
+                        <div class="p-3 rounded bg-warm-bg border border-warm-border">
                             <p class="font-medium text-[#2D2723]">Putusan MA No. 108/Pid/2024</p>
                             <p class="text-[11px] text-[#7A6E65] mt-1 leading-relaxed">Kriteria pembuktian saksi tunggal
                                 pada tindak pidana ringan.</p>

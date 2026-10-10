@@ -10,15 +10,15 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="bg-[#F4EFEB] text-[#2D2723] antialiased min-h-screen flex items-center justify-center p-4 lg:p-8">
+<body class="bg-warm-bg text-[#2D2723] antialiased min-h-screen flex items-center justify-center p-4 lg:p-8">
 
     {{-- Main Container Card --}}
     <div
-        class="w-full max-w-5xl bg-[#FAF8F5] border border-[#E5DED6] rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row min-h-[620px]">
+        class="w-full max-w-5xl bg-warm-card border border-warm-border rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row min-h-155">
 
         {{-- ================= SISI KIRI: GAMBER DEWI THEMIS & BRANDING ================= --}}
         <div
-            class="relative flex-1 bg-[#1A1614] text-[#E5DED6] p-8 lg:p-12 flex flex-col justify-between overflow-hidden shrink">
+            class="relative flex-1 bg-dark-sidebar text-warm-border p-8 lg:p-12 flex flex-col justify-between overflow-hidden shrink">
 
             {{-- Background Subtle Radial Glow --}}
             <div
@@ -27,13 +27,15 @@
 
             {{-- Image Asset Dewi Themis (Positioned Bottom Right as Art Backdrop) --}}
             <div
-                class="absolute -bottom-6 -right-12 lg:-bottom-10 lg:-right-16 w-[320px] lg:w-[440px] pointer-events-none select-none z-0">
+                class="absolute -bottom-6 -right-12 lg:-bottom-10 lg:-right-16 w-[320px] lg:w-110 pointer-events-none select-none z-0">
                 <img src="{{ asset('images/dewi-themis.png') }}" alt="Dewi Themis"
                     class="w-full h-auto object-contain opacity-40 mix-blend-lighten filter brightness-90 contrast-110 drop-shadow-2xl">
                 {{-- Fade Mask Overlay agar bagian bawah & kiri gambar menyatu mulus dengan warna background #1A1614 --}}
-                <div class="absolute inset-0 bg-gradient-to-t from-[#1A1614] via-transparent to-transparent opacity-80">
+                <div
+                    class="absolute inset-0 bg-linear-to-t from-dark-sidebar via-transparent to-transparent opacity-80">
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-r from-[#1A1614] via-transparent to-transparent opacity-60">
+                <div
+                    class="absolute inset-0 bg-linear-to-r from-dark-sidebar via-transparent to-transparent opacity-60">
                 </div>
             </div>
 
@@ -79,7 +81,7 @@
 
         {{-- ================= SISI KANAN: AREA INPUT LOGIN ================= --}}
         <div
-            class="w-full lg:w-[380px] xl:w-[420px] bg-[#FAF8F5] p-8 lg:p-10 flex flex-col justify-between shrink-0 border-t lg:border-t-0 lg:border-l border-[#E5DED6] z-20">
+            class="w-full lg:w-95 xl:w-105 bg-warm-card p-8 lg:p-10 flex flex-col justify-between shrink-0 border-t lg:border-t-0 lg:border-l border-warm-border z-20">
 
             <div class="my-auto space-y-6">
                 {{-- Header Form --}}
@@ -96,6 +98,15 @@
                     </div>
                 @endif
 
+                @php
+                    $nipInputClass =
+                        'w-full px-3.5 py-2.5 pl-9 text-xs bg-warm-bg rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] focus:bg-white transition-all border ' .
+                        ($errors->has('nip') ? 'border-red-500' : 'border-warm-border');
+                    $passwordInputClass =
+                        'w-full px-3.5 py-2.5 pl-9 pr-9 text-xs bg-[#F4EFEB] rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] focus:bg-white transition-all border ' .
+                        ($errors->has('password') ? 'border-red-500' : 'border-warm-border');
+                @endphp
+
                 {{-- Form Login --}}
                 <form method="POST" action="{{ route('login') }}" class="space-y-4">
                     @csrf
@@ -106,8 +117,7 @@
                             Pengguna</label>
                         <div class="relative">
                             <input id="nip" type="text" name="nip" value="{{ old('nip') }}" required
-                                autofocus placeholder="Masukkan NIP Anda"
-                                class="w-full px-3.5 py-2.5 pl-9 text-xs bg-[#F4EFEB] border border-[#E5DED6] rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] focus:bg-white transition-all @error('nip') border-red-500 @enderror">
+                                autofocus placeholder="Masukkan NIP Anda" class="{{ $nipInputClass }}">
                             <svg class="w-4 h-4 text-[#A39589] absolute left-3 top-3" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -124,14 +134,13 @@
                         <div class="flex items-center justify-between">
                             <label for="password" class="block text-xs font-semibold text-[#5C5046]">Kata Sandi</label>
                             @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}"
-                                    class="text-[11px] text-[#8C6D53] hover:underline font-medium">Lupa sandi?</a>
+                                <a href="" class="text-[11px] text-[#8C6D53] hover:underline font-medium">Lupa
+                                    sandi?</a>
                             @endif
                         </div>
                         <div class="relative">
                             <input id="password" :type="showPass ? 'text' : 'password'" name="password" required
-                                placeholder="••••••••"
-                                class="w-full px-3.5 py-2.5 pl-9 pr-9 text-xs bg-[#F4EFEB] border border-[#E5DED6] rounded-lg text-[#2D2723] placeholder-[#A39589] focus:outline-none focus:border-[#8C6D53] focus:bg-white transition-all @error('password') border-red-500 @enderror">
+                                placeholder="••••••••" class="{{ $passwordInputClass }}">
                             <svg class="w-4 h-4 text-[#A39589] absolute left-3 top-3" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -162,7 +171,7 @@
                     <div class="flex items-center justify-between pt-1">
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" name="remember"
-                                class="w-3.5 h-3.5 text-[#8C6D53] border-[#E5DED6] rounded bg-[#F4EFEB] focus:ring-0 focus:ring-offset-0 accent-[#8C6D53]">
+                                class="w-3.5 h-3.5 text-[#8C6D53] border-warm-border rounded bg-warm-bg focus:ring-0 focus:ring-offset-0 accent-[#8C6D53]">
                             <span class="text-xs text-[#7A6E65]">Ingat sesi login saya</span>
                         </label>
                     </div>
@@ -180,7 +189,7 @@
             </div>
 
             {{-- Footer Help Contact --}}
-            <div class="pt-6 border-t border-[#E5DED6] text-center text-[11px] text-[#A39589]">
+            <div class="pt-6 border-t border-warm-border text-center text-[11px] text-[#A39589]">
                 Kendala akses akun? Hubungi <a href="#" class="text-[#8C6D53] hover:underline font-medium">Tim
                     IT Pengadilan</a>
             </div>

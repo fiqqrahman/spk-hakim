@@ -5,7 +5,8 @@
 @section('content')
     <div class="w-full space-y-6" x-data="{
         showDetailModal: false,
-        activeDetail: {
+        // State Perkara Terpilih di Panel Samping (Default: Perkara No. 1)
+        selectedCase: {
             noPerkara: '128/Pid.B/2026/PN Plk',
             terdakwa: 'Budi Santoso',
             pasal: 'Pasal 362 KUHP',
@@ -16,8 +17,14 @@
                 { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
             ]
         },
-        openDetail(data) {
-            this.activeDetail = data;
+        // State Modal Pop-up Full
+        activeDetailModal: {},
+    
+        selectCase(data) {
+            this.selectedCase = data;
+        },
+        openModal(data) {
+            this.activeDetailModal = data;
             this.showDetailModal = true;
         }
     }">
@@ -56,7 +63,7 @@
             </div>
         </div>
 
-        {{-- Main Container: Table & Active Item Detail Panel --}}
+        {{-- Main Container: Table & Dynamic Side Inspector Panel --}}
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {{-- Table Section (Col Span 2) --}}
             <div
@@ -76,8 +83,20 @@
                         </thead>
                         <tbody class="divide-y divide-[#E5DED6] text-[#2D2723]">
                             {{-- Row 1 --}}
-                            <tr
-                                class="bg-[#EFE9E2]/60 hover:bg-[#EFE9E2] transition-colors cursor-pointer border-l-4 border-l-[#8C6D53]">
+                            <tr @click="selectCase({
+                                noPerkara: '128/Pid.B/2026/PN Plk',
+                                terdakwa: 'Budi Santoso',
+                                pasal: 'Pasal 362 KUHP',
+                                status: 'Pembuktian',
+                                ringkasan: 'Terdakwa Budi Santoso didakwa mengambil 1 unit sepeda motor milik saksi korban pada tanggal 12 September 2026 tanpa izin dengan maksud untuk dimiliki secara melawan hukum.',
+                                unsur: [
+                                    { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa Budi Santoso sesuai BAP dan pembenaran saksi.' },
+                                    { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
+                                ]
+                            })"
+                                :class="selectedCase.noPerkara === '128/Pid.B/2026/PN Plk' ?
+                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-[#F4EFEB]'"
+                                class="transition-colors cursor-pointer">
                                 <td class="py-3.5 px-4 font-semibold">128/Pid.B/2026/PN Plk</td>
                                 <td class="py-3.5 px-4 font-medium">Budi Santoso</td>
                                 <td class="py-3.5 px-4 text-[#7A6E65]">Pasal 362 KUHP</td>
@@ -95,7 +114,7 @@
                                 </td>
                                 <td class="py-3.5 px-4 text-right">
                                     <button
-                                        @click="openDetail({
+                                        @click.stop="openModal({
                                     noPerkara: '128/Pid.B/2026/PN Plk',
                                     terdakwa: 'Budi Santoso',
                                     pasal: 'Pasal 362 KUHP',
@@ -111,7 +130,21 @@
                                 </td>
                             </tr>
                             {{-- Row 2 --}}
-                            <tr class="hover:bg-[#F4EFEB] transition-colors cursor-pointer">
+                            <tr @click="selectCase({
+                                noPerkara: '130/Pid.B/2026/PN Plk',
+                                terdakwa: 'Siti Rahmawati',
+                                pasal: 'Pasal 378 KUHP',
+                                status: 'Dakwaan',
+                                ringkasan: 'Terdakwa Siti Rahmawati didakwa melakukan bujuk rayu dan penipuan investasi bodong bernilai puluhan juta rupiah.',
+                                unsur: [
+                                    { nama: '1. Unsur &quot;Barang Siapa&quot;', status: 'Terpenuhi', ket: 'Identitas Terdakwa sesuai dengan KTP dan BAP.' },
+                                    { nama: '2. Unsur &quot;Dengan Maksud Menguntungkan Diri Sendiri&quot;', status: 'Terpenuhi', ket: 'Bukti transfer rekening menampung dana saksi korban.' },
+                                    { nama: '3. Unsur &quot;Tipu Muslihat / Rangkaian Kebohongan&quot;', status: 'Proses', ket: 'Masih menunggu keterangan saksi ahli perbankan.' }
+                                ]
+                            })"
+                                :class="selectedCase.noPerkara === '130/Pid.B/2026/PN Plk' ?
+                                    'bg-[#EFE9E2]/80 border-l-4 border-l-[#8C6D53]' : 'hover:bg-[#F4EFEB]'"
+                                class="transition-colors cursor-pointer">
                                 <td class="py-3.5 px-4 font-semibold">130/Pid.B/2026/PN Plk</td>
                                 <td class="py-3.5 px-4 font-medium">Siti Rahmawati</td>
                                 <td class="py-3.5 px-4 text-[#7A6E65]">Pasal 378 KUHP</td>
@@ -129,7 +162,7 @@
                                 </td>
                                 <td class="py-3.5 px-4 text-right">
                                     <button
-                                        @click="openDetail({
+                                        @click.stop="openModal({
                                     noPerkara: '130/Pid.B/2026/PN Plk',
                                     terdakwa: 'Siti Rahmawati',
                                     pasal: 'Pasal 378 KUHP',
@@ -164,15 +197,15 @@
                 </div>
             </div>
 
-            {{-- Detail Side Panel (Col Span 1) --}}
-            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm space-y-5">
+            {{-- Detail Side Panel (Col Span 1) -- Synchronized with selectedCase --}}
+            <div class="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DED6] shadow-sm space-y-5 h-fit sticky top-6">
                 <div class="border-b border-[#E5DED6] pb-3 flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Analisis
                             AI</span>
-                        <h2 class="text-sm font-semibold text-[#2D2723]" x-text="'No. ' + activeDetail.noPerkara"></h2>
+                        <h2 class="text-sm font-semibold text-[#2D2723]" x-text="'No. ' + selectedCase.noPerkara"></h2>
                     </div>
-                    <span class="p-1 bg-[#EFE9E2] rounded text-[#8C6D53]">
+                    <span class="p-1.5 bg-[#EFE9E2] rounded-lg text-[#8C6D53]">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
@@ -181,12 +214,12 @@
                 <div class="space-y-2 text-xs">
                     <span class="font-semibold text-[#7A6E65]">Ringkasan Pokok Dakwaan:</span>
                     <p class="text-[#5C5046] bg-[#F4EFEB] p-3 rounded-lg border border-[#E5DED6] leading-relaxed"
-                        x-text="activeDetail.ringkasan"></p>
+                        x-text="selectedCase.ringkasan"></p>
                 </div>
                 <div class="space-y-3">
                     <span class="text-xs font-semibold text-[#2D2723] block"
-                        x-text="'Matriks Unsur ' + activeDetail.pasal + ':'"></span>
-                    <template x-for="(u, index) in activeDetail.unsur" :key="index">
+                        x-text="'Matriks Unsur ' + selectedCase.pasal + ':'"></span>
+                    <template x-for="(u, index) in selectedCase.unsur" :key="index">
                         <div class="p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6] space-y-1">
                             <div class="flex items-center justify-between text-xs">
                                 <span class="font-semibold text-[#2D2723]" x-text="u.nama"></span>
@@ -227,8 +260,8 @@
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Detail Lengkap
                             Ekstraksi AI</span>
-                        <h3 class="text-base font-bold text-[#2D2723]" x-text="'Perkara No. ' + activeDetail.noPerkara">
-                        </h3>
+                        <h3 class="text-base font-bold text-[#2D2723]"
+                            x-text="'Perkara No. ' + activeDetailModal.noPerkara"></h3>
                     </div>
                     <button @click="showDetailModal = false" class="text-[#7A6E65] hover:text-[#2D2723]">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,15 +277,15 @@
                     <div class="grid grid-cols-3 gap-4 p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6]">
                         <div>
                             <span class="text-[#7A6E65] block">Nama Terdakwa:</span>
-                            <span class="font-semibold text-[#2D2723]" x-text="activeDetail.terdakwa"></span>
+                            <span class="font-semibold text-[#2D2723]" x-text="activeDetailModal.terdakwa"></span>
                         </div>
                         <div>
                             <span class="text-[#7A6E65] block">Pasal Utama:</span>
-                            <span class="font-semibold text-[#2D2723]" x-text="activeDetail.pasal"></span>
+                            <span class="font-semibold text-[#2D2723]" x-text="activeDetailModal.pasal"></span>
                         </div>
                         <div>
                             <span class="text-[#7A6E65] block">Status Persidangan:</span>
-                            <span class="font-semibold text-[#8C6D53]" x-text="activeDetail.status"></span>
+                            <span class="font-semibold text-[#8C6D53]" x-text="activeDetailModal.status"></span>
                         </div>
                     </div>
 
@@ -260,15 +293,15 @@
                     <div class="space-y-1.5">
                         <span class="font-semibold text-[#2D2723] block">Uraian Ringkasan Surat Dakwaan:</span>
                         <p class="text-[#5C5046] bg-[#F4EFEB] p-3 rounded-lg border border-[#E5DED6] leading-relaxed"
-                            x-text="activeDetail.ringkasan"></p>
+                            x-text="activeDetailModal.ringkasan"></p>
                     </div>
 
                     {{-- Matriks Keterpenuhan Unsur --}}
                     <div class="space-y-2">
                         <span class="font-semibold text-[#2D2723] block"
-                            x-text="'Evaluasi Keterpenuhan ' + activeDetail.pasal + ':'"></span>
+                            x-text="'Evaluasi Keterpenuhan ' + activeDetailModal.pasal + ':'"></span>
                         <div class="space-y-2">
-                            <template x-for="(u, index) in activeDetail.unsur" :key="index">
+                            <template x-for="(u, index) in activeDetailModal.unsur" :key="index">
                                 <div class="p-3 bg-[#F4EFEB] rounded-lg border border-[#E5DED6] space-y-1">
                                     <div class="flex items-center justify-between">
                                         <span class="font-semibold text-[#2D2723]" x-text="u.nama"></span>

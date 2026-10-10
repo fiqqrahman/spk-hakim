@@ -5,7 +5,9 @@
 @section('content')
     <div class="w-full space-y-6" x-data="{
         showDetailModal: false,
-        // State Perkara Terpilih di Panel Samping (Default: Perkara No. 1)
+        showPrintModal: false,
+    
+        // State Perkara Terpilih di Panel Samping
         selectedCase: {
             noPerkara: '128/Pid.B/2026/PN Plk',
             terdakwa: 'Budi Santoso',
@@ -17,7 +19,7 @@
                 { nama: '2. Unsur &quot;Mengambil Barang&quot;', status: 'Terpenuhi', ket: 'Penguasaan fisik sepeda motor berpindah tangan dikuatkan rekam CCTV.' }
             ]
         },
-        // State Modal Pop-up Full
+        // State Modal Detail
         activeDetailModal: {},
     
         selectCase(data) {
@@ -26,6 +28,9 @@
         openModal(data) {
             this.activeDetailModal = data;
             this.showDetailModal = true;
+        },
+        triggerPrint() {
+            window.print();
         }
     }">
         {{-- Top Action Header & Filter --}}
@@ -233,8 +238,8 @@
                     </template>
                 </div>
                 <div class="pt-2 border-t border-[#E5DED6]">
-                    <button
-                        class="w-full py-2 bg-[#8C6D53] hover:bg-[#735842] text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <button @click="showPrintModal = true"
+                        class="w-full py-2 bg-[#8C6D53] hover:bg-[#735842] text-white text-xs font-medium rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -323,7 +328,7 @@
                         class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium rounded-lg transition-colors">
                         Tutup
                     </button>
-                    <button
+                    <button @click="showDetailModal = false; showPrintModal = true"
                         class="px-4 py-1.5 bg-[#8C6D53] hover:bg-[#735842] text-white font-medium rounded-lg transition-colors flex items-center gap-2">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -331,6 +336,91 @@
                         </svg>
                         <span>Cetak Draft Putusan</span>
                     </button>
+                </div>
+            </div>
+        </div>
+
+        {{-- MODAL PRATINJAU / CETAK DRAFT PUTUSAN --}}
+        <div x-show="showPrintModal" x-cloak
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4"
+            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+
+            <div class="bg-[#FAF8F5] border border-[#E5DED6] rounded-xl shadow-xl w-full max-w-3xl overflow-hidden"
+                @click.away="showPrintModal = false">
+
+                {{-- Header Modal --}}
+                <div class="px-6 py-4 bg-[#F4EFEB] border-b border-[#E5DED6] flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-[#8C6D53]">Draft Pertimbangan
+                            Hukum</span>
+                        <h3 class="text-base font-bold text-[#2D2723]"
+                            x-text="'Pratinjau Putusan - ' + selectedCase.noPerkara"></h3>
+                    </div>
+                    <button @click="showPrintModal = false" class="text-[#7A6E65] hover:text-[#2D2723]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                {{-- Dokumen Paper Style --}}
+                <div class="p-6 max-h-[70vh] overflow-y-auto">
+                    <div
+                        class="bg-white p-8 rounded border border-[#E5DED6] shadow-inner space-y-4 text-xs font-serif leading-relaxed text-gray-900">
+                        <div
+                            class="text-center font-bold tracking-widest uppercase border-b pb-4 border-gray-200 space-y-1">
+                            <p class="text-sm">PUTUSAN</p>
+                            <p class="text-[11px]" x-text="'Nomor: ' + selectedCase.noPerkara"></p>
+                            <p class="text-[11px] uppercase">DEMI KEADILAN BERDASARKAN KETUHANAN YANG MAHA ESA</p>
+                        </div>
+
+                        <p>Pengadilan Negeri Palangka Raya yang memeriksa dan mengadili perkara pidana dengan acara
+                            pemeriksaan biasa pada tingkat pertama, telah menjatuhkan putusan sebagai berikut dalam perkara
+                            Terdakwa:</p>
+
+                        <div class="pl-4 space-y-0.5 font-sans text-[11px] text-gray-700">
+                            <p><strong>Nama Lengkap:</strong> <span x-text="selectedCase.terdakwa"></span></p>
+                            <p><strong>Dakwaan Primary:</strong> <span x-text="selectedCase.pasal"></span></p>
+                        </div>
+
+                        <p class="font-bold font-sans text-xs pt-2">PERTIMBANGAN HUKUM MAJELIS HAKIM:</p>
+                        <p
+                            class="italic text-gray-700 bg-gray-50 p-3 rounded border border-gray-200 font-sans text-[11px]">
+                            Menimbang, bahwa berdasarkan fakta-fakta yang terungkap di persidangan melalui pemeriksaan alat
+                            bukti dan barang bukti, Majelis Hakim mempertimbangkan keterpenuhan unsur-unsur tindak pidana
+                            sebagai berikut:
+                        </p>
+
+                        <div class="space-y-2 font-sans text-[11px]">
+                            <template x-for="(u, index) in selectedCase.unsur" :key="index">
+                                <div class="p-2.5 bg-[#FAF8F5] rounded border border-[#E5DED6]">
+                                    <span class="font-bold text-[#2D2723]" x-text="u.nama"></span>:
+                                    <span class="text-gray-600" x-text="u.ket"></span>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Footer Controls --}}
+                <div class="px-6 py-3 bg-[#F4EFEB] border-t border-[#E5DED6] flex items-center justify-between">
+                    <button @click="showPrintModal = false"
+                        class="px-4 py-1.5 bg-[#E5DED6] hover:bg-[#DDD5CC] text-[#2D2723] font-medium text-xs rounded-lg transition-colors">
+                        Tutup
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <button @click="triggerPrint()"
+                            class="px-4 py-1.5 bg-[#8C6D53] hover:bg-[#735842] text-white font-medium text-xs rounded-lg transition-colors flex items-center gap-2 cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                            </svg>
+                            <span>Cetak Dokumen</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

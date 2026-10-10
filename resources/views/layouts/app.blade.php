@@ -17,6 +17,10 @@
 
     {{-- Main Area --}}
     <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        {{-- Toast Floating Alert --}}
+        @include('components.toast-alert')
+
         {{-- Header --}}
         @include('layouts.partials.header')
 
